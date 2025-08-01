@@ -46,7 +46,7 @@ static class ApiPageMarkdownTemplate
         };
 
         FormattableString ToHeading(int level, string title, string? id = null) =>
-            $"{new string('#', level)}{(string.IsNullOrEmpty(id) ? null : $" <a id=\"{id}\"></a>")} {Escape(title)}\n\n";
+            $"{(string.IsNullOrEmpty(id) ? null : "___\n")}{new string('#', level)}{(string.IsNullOrEmpty(id) ? null : $" <a id=\"{id}\"></a>")} {Escape(title)}\n\n";
 
         FormattableString Facts(Facts facts) =>
             $"{string.Concat(facts.facts.Select(fact => $"{Escape(fact.name)}: {Inline(fact.value)}  \n"))}\n";
